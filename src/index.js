@@ -10,17 +10,39 @@ form.addEventListener('submit', (e)=>{
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data)
+        data.forEach(handleImages);
     })
     
 })
 
 }
 
-handleSearch()
 
 function searchParser(e){
     let search = e.target['search-button'].value
     let searchHandler = [...search.split(' ')]
     return searchHandler.join('+')
-
+    
 }
+
+function handleImages(data){
+    let imageUrl = data.poster
+    let container = document.querySelector('#info-container')
+    let moviePoster = document.createElement('img')
+
+    fetch(`https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_ca.jpg`)
+    .then ((res)=>res.json())
+    .then((posters)=>{
+
+        let Url = URL.createObjectURL(posters)
+        moviePoster.src = Url
+        container.appendChild(moviePoster)
+
+    })
+}
+
+
+
+
+
+handleSearch()
