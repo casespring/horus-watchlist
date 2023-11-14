@@ -1,0 +1,58 @@
+{
+  "watch-list": [
+    {
+      "title": "John Wick",
+      "year": 2014,
+      "poster": "30/3002370dbc564e5d8",
+      "ids": {
+        "simkl_id": 342994,
+        "slug": "john-wick",
+        "tmdb": "245891"
+      },
+      "category": "movie",
+      "id": 1
+    },
+    {
+      "title": "John Wick: Chapter 3 - Parabellum",
+      "year": 2019,
+      "poster": "79/791511626114c18c9",
+      "ids": {
+        "simkl_id": 687232,
+        "slug": "john-wick-chapter-3---parabellum",
+        "tmdb": "458156"
+      },
+      "category": "movie",
+      "id": 2
+    },
+    {
+      "title": "Naruto Shippuuden",
+      "title_en": "Naruto Shippuden (S2)",
+      "title_romaji": "Naruto Shippuuden",
+      "year": 2007,
+      "type": "tv",
+      "poster": "45/450715779633393",
+      "ids": {
+        "simkl_id": 40053,
+        "slug": "naruto-shippuuden",
+        "tmdb": "31910"
+      },
+      "category": "anime",
+      "id": 3
+    },
+    {
+      "title": "Pluto",
+      "title_romaji": "Pluto",
+      "year": 2023,
+      "type": "ona",
+      "poster": "14/146505770593f92126",
+      "ids": {
+        "simkl_id": 693327,
+        "slug": "pluto",
+        "tmdb": "237330"
+      },
+      "category": "anime",
+      "id": 4
+    },
+  ],
+  "completed": []
+}

@@ -1,0 +1,5 @@
+{
+    "/watch-list/:category" : "/watch-list?category=:category",
+    "/completed/:category" : "/completed?category=:category"
+
+}
