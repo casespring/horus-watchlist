@@ -38,9 +38,21 @@
       },
       "category": "anime",
       "id": 3
-    }
+    },
+    {
+      "title": "Pluto",
+      "title_romaji": "Pluto",
+      "year": 2023,
+      "type": "ona",
+      "poster": "14/146505770593f92126",
+      "ids": {
+        "simkl_id": 693327,
+        "slug": "pluto",
+        "tmdb": "237330"
+      },
+      "category": "anime",
+      "id": 4
+    },
   ],
-  "completed": [
-    
-  ]
+  "completed": []
 }

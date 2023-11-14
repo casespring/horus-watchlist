@@ -1,6 +1,11 @@
 #container {
     text-align: center;
     display: block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: black;
 }
 
 #poster-container {
@@ -21,3 +26,17 @@
     margin-left: 520px;
 }
 
+#horus{
+    width: 100px;
+    height: 100px;
+    
+}
+
+#site-header{
+    display: inline-block;
+    width: 100%;
+}
+
+body{
+    background-image: url(https://t3.ftcdn.net/jpg/04/44/80/68/360_F_444806827_qItmWKBVDs3aHFlATYMuWZZZCx0VVxUH.jpg);
+}
