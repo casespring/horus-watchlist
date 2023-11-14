@@ -32,27 +32,49 @@ selector.addEventListener("change", e => {
         let moviePoster = document.createElement('img');
         moviePoster.className = 'posters';
         moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_c.jpg`;
-        console.log(data)
+        
+        container.appendChild(moviePoster)
+        
+        moviePoster.addEventListener('click', (e)=>{
+            let id = data.ids['simkl_id']
+            document.querySelector('#selectedMovie').src= e.target.src
+            renderInfo(id)
+            moviePoster.addEventListener('keydown', handleCompleted(event))
+                
+        })
 
-    container.appendChild(moviePoster)
+        moviePoster.addEventListener('dblclick', ()=>{
+            alert(`${data.title} was added to your Horus Watchlist`)
+            data.category = `${searchMedium}`
 
-    moviePoster.addEventListener('click', (e)=>{
-        let id = data.ids['simkl_id']
-        document.querySelector('#selectedMovie').src= e.target.src
-        renderInfo(id)
-    })
-}
+
+            fetch(`http://localhost:3000/watch-list`, {
+                method : 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify(data)
+
+            })
+            .then((res)=>res.json())
+            .then((horus)=>{
+                console.log(horus)
+            })
+
+        })
+
+
+    }
 
 function renderInfo(id){
     let medium = 'movies'
+
     fetch(`https://api.simkl.com/${medium}/${id}?extended=full&client_id=dd7675f0ec853dbe3f15e18e3bf9c23f45d586a0b6cce7369149e57836a633c0`)
     .then((res)=>res.json())
     .then((info)=>{
-        console.log(info)
         let trailer = document.querySelector('#trailer')
         let overview = document.querySelector('#overview')
         let rating = document.querySelector('#rating')
-        console.log(info.trailers)
         trailer.href = `https://www.youtube.com/watch?v=${info.trailers[0].youtube}`
         trailer.textContent = info.title
         overview.textContent = `Synopsis: ${info.overview}`
@@ -60,3 +82,54 @@ function renderInfo(id){
     })
 }
 
+
+function accessWatchlist(){
+    let watchlist = document.querySelector('#watch-list')
+    watchlist.addEventListener('click', ()=>{
+        fetch(`http://localhost:3000/watch-list`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            console.log(data)
+            data.forEach(handleImages)
+        })
+
+        
+    })
+}
+
+function accessCompleted(){
+    let completed = document.querySelector('#completed')
+    completed.addEventListener('click', ()=>{
+        fetch(`http://localhost:3000/completed`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            console.log(data)
+            data.forEach(handleImages)
+        })
+
+        
+    })
+}
+
+function handleCompleted(event){
+        console.log(event)
+        // if(e.code === 'Space'){
+            // fetch(`http://localhost:3000/completed`, {
+            //     method : 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body : JSON.stringify(data)
+    
+            // })
+            // .then((res)=>res.json())
+            // .then((horus)=>{
+            //      horus
+            // })
+        // }
+    
+}
+
+accessCompleted()
+
+accessWatchlist()
