@@ -12,14 +12,21 @@
             <div>
                 <h1>Horus</h1>
                 <nav class='multi-media-list'>
-                    <p>Anime</p>
-                    <p>Books</p>
-                    <p>Movies</p>
-                    <p>TV</p> 
+                    <h2>Anime</h2>
+                    <h2>Books</h2>
+                    <h2>Movies</h2>
+                    <h2>TV</h2> 
                 </nav>
             </div>
             <div>
                 <form id="search-button">
+                    <label for="category">Choose a category:</label> 
+                    <select name="category-options" id="category-options">
+                        <option>Select</option> 
+                        <option value="movie">Movie</option> 
+                        <option value="tv">Tv Show</option> 
+                        <option value="anime">Anime</option> 
+                    </select>
                     <input type ='text' placeholder="Search for your favorite title" name="search-button">
                     <button type="submit">Search</button>
                 </form>
@@ -32,15 +39,15 @@
             <section>
                 <div>
                     <nav id="watch-list-nav">
-                        <p>Watch List</p>
-                        <p>Completed</p>
+                        <h3>Watch List</h3>
+                        <h3>Completed</h3>
                     </nav>
                 </div>
                 <div id="info-container">
                     <h3 id = 'title'>
-                        <a id='trailer' href=""></a>
+                        <a id='trailer' href="" target="_blank"></a>
                     </h3>
-                    <img id="selectedMovie" src="" >
+                    <img id="selectedMovie" src="">
                     <p id="rating"></p>
                     <p id="overview"></p>
                 </div>
