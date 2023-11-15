@@ -66,6 +66,18 @@
       },
       "category": "anime",
       "id": 5
+    },
+    {
+      "title": "Rain Man",
+      "year": 1988,
+      "poster": "80/8043764caa5ebc6b",
+      "ids": {
+        "simkl_id": 53642,
+        "slug": "rain-man",
+        "tmdb": "380"
+      },
+      "category": "movie",
+      "id": 6
     }
   ],
   "completed": []
