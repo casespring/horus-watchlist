@@ -40,7 +40,7 @@ selector.addEventListener("change", e => {
             let id = data.ids['simkl_id']
             document.querySelector('#selectedMovie').src= e.target.src
             renderInfo(id)
-            moviePoster.addEventListener('keydown', handleCompleted(event))
+            // moviePoster.addEventListener('keydown', handleCompleted(event))
                 
         })
 
@@ -78,12 +78,17 @@ function renderInfo(id){
         let rating = document.querySelector('#rating')
         trailer.textContent = info.title
         overview.textContent = `Synopsis: ${info.overview}`
+        ratings(info)
+        trailerHref(info)
         function ratings(info) {
-            if (info.ratings.imdb === undefined) {
+            if (info.ratings === undefined) {
                 return rating.textContent = "Not yet rated.";
+            } else if (info.ratings.imdb === undefined){
+                return rating.textContent = 'Not yet rated.'
             } else {
                 rating.textContent = `Rating: ${info.ratings.imdb.rating}`
             }
+            
         }
         function trailerHref(info) {
             if (info.trailers === null) {
@@ -92,15 +97,15 @@ function renderInfo(id){
                 trailer.href = `https://www.youtube.com/watch?v=${info.trailers[0].youtube}`
             }
         }
-        ratings(info)
-        trailerHref(info)
     })
 }
 
 
 function accessWatchlist(){
     let watchlist = document.querySelector('#watch-list')
+    let container = document.querySelector('#poster-container')
     watchlist.addEventListener('click', ()=>{
+        container.innerHTML = ''
         fetch(`http://localhost:3000/watch-list`)
         .then((res)=>res.json())
         .then((data)=>{
@@ -111,21 +116,22 @@ function accessWatchlist(){
     })
 }
 
-function accessCompleted(){
-    let completed = document.querySelector('#completed')
-    completed.addEventListener('click', ()=>{
-        fetch(`http://localhost:3000/completed`)
-        .then((res)=>res.json())
-        .then((data)=>{
-            console.log(data)
-            data.forEach(handleImages)
-        })
-        
-    })
-}
+// function accessCompleted(){
+//     let completed = document.querySelector('#completed')
+//     completed.addEventListener('click', ()=>{
+//         fetch(`http://localhost:3000/completed`)
+//         .then((res)=>res.json())
+//         .then((data)=>{
+//             console.log(data)
+//             data.forEach(handleImages)
+//         })
 
-function handleCompleted(event){
-        console.log(event)
+        
+//     })
+// }
+
+// function handleCompleted(event){
+//         console.log(event)
         // if(e.code === 'Space'){
             // fetch(`http://localhost:3000/completed`, {
             //     method : 'POST',
@@ -141,8 +147,8 @@ function handleCompleted(event){
             // })
         // }
     
-}
+// }
 
-accessCompleted()
+// accessCompleted()
 
 accessWatchlist()

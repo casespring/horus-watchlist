@@ -2,7 +2,7 @@
     text-align: center;
     display: block;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom : 20%;
     margin-left: 30px;
     margin-right: 30px;
     background-color: black;
@@ -32,6 +32,7 @@
     
 }
 
+
 #site-header{
     display: inline-block;
     width: 100%;
@@ -39,4 +40,22 @@
 
 body{
     background-image: url(https://t3.ftcdn.net/jpg/04/44/80/68/360_F_444806827_qItmWKBVDs3aHFlATYMuWZZZCx0VVxUH.jpg);
+}
+
+.text {
+    color:rgb(169, 151, 46);
+    font-family:  'Press Start 2P', cursive;
+}
+
+label{
+    font-size: 0.8em;
+}
+
+#rating{
+    font-size: small;
+}
+
+#overview{
+    font-size: 0.5em;
+    margin-bottom: 30px;
 }
