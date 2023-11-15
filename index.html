@@ -4,18 +4,21 @@
         <meta charset="utf-8">
         <title>Horus</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
         <script type="text/javascript" defer src="./src/index.js"></script>
 
     </head>
     <body>
         <div id = 'container'>
             <div id = 'site-header'>
-                <h1>Eye of Horus</h1>
+                <h1 class="text">EYE OF HORUS</h1>
                 <img id='horus' src = "https://preview.redd.it/ma2vvl46wgp71.png?width=400&format=png&auto=webp&s=4fe105b36d235b374de3319407c3ee93db49562f">
             </div>
             <div>
                 <form class="test-float" id="search-button">
-                    <label for="category">Choose a category:</label> 
+                    <label class ='text' for="category">Choose a category:</label> 
                     <select name="category-options" id="category-options">
                         <option>Select</option> 
                         <option value="movie">Movie</option> 
@@ -34,17 +37,17 @@
             <section>
                 <div class="test-float">
                     <nav id="watch-list-nav">
-                        <h3 id = 'watch-list'>Watch List</h3>
-                        <h3 id= "completed">Completed</h3>
+                        <h3 class = 'text' id = 'watch-list'>Watch List</h3>
+                        <h3 class='text' id= "completed">Completed</h3>
                     </nav>
                 </div>
                 <div class="test-float" id="info-container">
-                    <h3 id = 'title'>
+                    <h3 id = 'title' class = 'text'>
                         <a id='trailer' href="" target="_blank"></a>
                     </h3>
                     <img id="selectedMovie" src="">
-                    <p id="rating"></p>
-                    <p id="overview"></p>
+                    <p class = 'text' id="rating"></p>
+                    <p class ='text' id="overview"></p>
                 </div>
             </section>
 
