@@ -2,7 +2,6 @@ let form = document.querySelector('#search-button');
 let selector = document.querySelector("#category-options")
 let searchMedium = '';
 selector.addEventListener("change", e => {
-    console.log(e.target.value);
     let category = e.target.value;
     console.log(category);
     searchMedium = category;
@@ -31,45 +30,45 @@ selector.addEventListener("change", e => {
         let imageUrl = data.poster;
         let container = document.querySelector('#poster-container');
         let moviePoster = document.createElement('img');
-        moviePoster.className = 'posters';
-        moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_c.jpg`;
         
-        container.appendChild(moviePoster)
+        moviePoster.className = 'posters';
+        moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_ca.jpg`;
+        
+        
+        container.append(moviePoster)
+        
         
         moviePoster.addEventListener('click', (e)=>{
             let id = data.ids['simkl_id']
             document.querySelector('#selectedMovie').src= e.target.src
-            renderInfo(id)
-            // moviePoster.addEventListener('keydown', handleCompleted(event))
-                
+            renderInfo(id,data)
+            
         })
 
-        moviePoster.addEventListener('dblclick', ()=>{
-            alert(`${data.title} was added to your Horus Watchlist`)
-            data.category = `${searchMedium}`
-
-
-            fetch(`http://localhost:3000/watch-list`, {
-                method : 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body : JSON.stringify(data)
-
+        moviePoster.addEventListener('dblclick', (e)=>{
+            let clickedMoviePoster = e.target;
+            fetch(`http://localhost:3000/watch-list/${data.id}`,{
+                method:'DELETE'
             })
-            .then((res)=>res.json())
-            .then((horus)=>{
-                console.log(horus)
-            })
-
+            .then((response) => {
+                if (response.ok) {
+                  clickedMoviePoster.remove();
+                  alert(`${data.title} has been deleted from your Horus Watchlist`);
+                } else {
+                  return response.json().then((errorData) => {
+                    alert(`Error: ${errorData.message}\nThis movie is not on your watchlist. You can't delete it.`);
+                  });
+                }
+              })
         })
+
 
 
     }
 
-function renderInfo(id){
+function renderInfo(id,data){
     let medium = 'movies'
-
+    
     fetch(`https://api.simkl.com/${medium}/${id}?extended=full&client_id=dd7675f0ec853dbe3f15e18e3bf9c23f45d586a0b6cce7369149e57836a633c0`)
     .then((res)=>res.json())
     .then((info)=>{
@@ -97,7 +96,12 @@ function renderInfo(id){
                 trailer.href = `https://www.youtube.com/watch?v=${info.trailers[0].youtube}`
             }
         }
+        
+        addToWatchlist(data)
+    
     })
+
+
 }
 
 
@@ -110,45 +114,94 @@ function accessWatchlist(){
         .then((res)=>res.json())
         .then((data)=>{
             console.log(data)
-            data.forEach(handleImages)
+            for(movies of data){
+                if(movies.completed ===false){
+                    handleImages(movies)
+                }
+            }
         })
         
     })
 }
 
-// function accessCompleted(){
-//     let completed = document.querySelector('#completed')
-//     completed.addEventListener('click', ()=>{
-//         fetch(`http://localhost:3000/completed`)
-//         .then((res)=>res.json())
-//         .then((data)=>{
-//             console.log(data)
-//             data.forEach(handleImages)
-//         })
+function accessCompleted(){
+    let completed = document.querySelector('#completed')
+    let container = document.querySelector('#poster-container')
+    completed.addEventListener('click', ()=>{
+        container.innerHTML=''
+        fetch(`http://localhost:3000/watch-list`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            for(movies of data){
+                if(movies.completed === true){
+                    handleImages(movies)
+                }
+            }
+        })
 
         
-//     })
-// }
+    })
+}
 
-// function handleCompleted(event){
-//         console.log(event)
-        // if(e.code === 'Space'){
-            // fetch(`http://localhost:3000/completed`, {
-            //     method : 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body : JSON.stringify(data)
-    
-            // })
-            // .then((res)=>res.json())
-            // .then((horus)=>{
-            //      horus
-            // })
-        // }
-    
-// }
+function addToWatchlist(data){
+    let imgDiv = document.querySelector('.imgDiv')
+    let watchlistButton = document.createElement('button')
+    let completedButton = document.createElement('button')
+    watchlistButton.id = 'watchlist-button'
+    watchlistButton.className = 'button'
+    watchlistButton.textContent = 'Add to Watchlist'
+    completedButton.id = 'completed-button'
+    completedButton.className = 'button'
+    completedButton.textContent = 'Add to Completed'
+    imgDiv.append(watchlistButton,completedButton)
 
-// accessCompleted()
+    watchlistButton.addEventListener('click', ()=>{
+        alert(`${data.title} was added to your Horus Watchlist`)
+        data.category = `${searchMedium}`
+        data.completed = false
+
+        
+        
+        fetch(`http://localhost:3000/watch-list`, {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body : JSON.stringify(data)
+            
+        })
+        .then((res)=>res.json())
+        .then((horus)=>{
+            console.log(horus)
+        })
+    })
+
+    completedButton.addEventListener('click', ()=>{
+        alert(`${data.title} was added to your Horus Completed List`)
+        addToCompleted(data)
+
+
+    })
+}
+        
+
+function addToCompleted(data){
+    console.log(data.id)
+    fetch(`http://localhost:3000/watch-list/${data.id}`,{
+        method : 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body : JSON.stringify({
+            "completed": true,
+        })
+    })
+        .then((res)=>res.json())
+        .then((check)=>{
+            console.log(check)
+        })
+}
+
+accessCompleted()
 
 accessWatchlist()
