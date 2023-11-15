@@ -18,7 +18,7 @@
     border: solid black 2px;
     margin: 0.3em;
     border-radius: 0.5em;
-    float: left;
+    /* float:left; */
 }
 
 #info-container{
@@ -58,4 +58,48 @@ label{
 #overview{
     font-size: 0.5em;
     margin-bottom: 30px;
+}
+
+.imgDiv #watchlist-button{
+    position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.imgDiv #completed-button{
+    position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.imgDiv .button:hover{
+    background-color: black;
+}
+
+#info-container img {
+    width: 100%;
+    height: auto;
+}
+
+.imgDiv{
+    position: relative;
+    width: 50%;
 }

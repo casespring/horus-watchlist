@@ -1,84 +1,17 @@
 {
   "watch-list": [
     {
-      "title": "John Wick",
-      "year": 2014,
-      "poster": "30/3002370dbc564e5d8",
+      "title": "Breaking Bad",
+      "year": 2008,
+      "poster": "97/978343d5161a724",
       "ids": {
-        "simkl_id": 342994,
-        "slug": "john-wick",
-        "tmdb": "245891"
+        "simkl_id": 11121,
+        "slug": "breaking-bad",
+        "tmdb": "1396"
       },
-      "category": "movie",
+      "category": "tv",
+      "completed": true,
       "id": 1
-    },
-    {
-      "title": "John Wick: Chapter 3 - Parabellum",
-      "year": 2019,
-      "poster": "79/791511626114c18c9",
-      "ids": {
-        "simkl_id": 687232,
-        "slug": "john-wick-chapter-3---parabellum",
-        "tmdb": "458156"
-      },
-      "category": "movie",
-      "id": 2
-    },
-    {
-      "title": "Naruto Shippuuden",
-      "title_en": "Naruto Shippuden (S2)",
-      "title_romaji": "Naruto Shippuuden",
-      "year": 2007,
-      "type": "tv",
-      "poster": "45/450715779633393",
-      "ids": {
-        "simkl_id": 40053,
-        "slug": "naruto-shippuuden",
-        "tmdb": "31910"
-      },
-      "category": "anime",
-      "id": 3
-    },
-    {
-      "title": "Pluto",
-      "title_romaji": "Pluto",
-      "year": 2023,
-      "type": "ona",
-      "poster": "14/146505770593f92126",
-      "ids": {
-        "simkl_id": 693327,
-        "slug": "pluto",
-        "tmdb": "237330"
-      },
-      "category": "anime",
-      "id": 4
-    },
-    {
-      "title": "Bleach: Sennen Kessen Hen - Ketsubetsu Tan",
-      "title_en": "Bleach: Thousand-Year Blood War - The Separation",
-      "title_romaji": "Bleach: Sennen Kessen Hen - Ketsubetsu Tan",
-      "year": 2023,
-      "type": "tv",
-      "poster": "14/142553443d6a47682f",
-      "ids": {
-        "simkl_id": 2056522,
-        "slug": "bleach-sennen-kessen-hen---ketsubetsu-tan"
-      },
-      "category": "anime",
-      "id": 5
-    },
-    {
-      "title": "Rain Man",
-      "year": 1988,
-      "poster": "80/8043764caa5ebc6b",
-      "ids": {
-        "simkl_id": 53642,
-        "slug": "rain-man",
-        "tmdb": "380"
-      },
-      "category": "movie",
-      "id": 6
     }
-  ],
-  "completed": []
+  ]
 }

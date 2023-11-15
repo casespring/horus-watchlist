@@ -1,5 +1,11 @@
 {
-    "/watch-list/:category" : "/watch-list?category=:category",
-    "/completed/:category" : "/completed?category=:category"
+    "/watch-list/:literallyanything" : "/watch-list?category=:literallyanything",
+    "/completed/:category" : "/completed?category=:category",
 
-}
+    "/watch-list/id/:id" : "/watch-list?id=:id",
+    "/completed/id/:id" : "/completed?id=:id"
+
+
+
+
+} 
