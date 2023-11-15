@@ -76,7 +76,6 @@ function renderInfo(id){
         let trailer = document.querySelector('#trailer')
         let overview = document.querySelector('#overview')
         let rating = document.querySelector('#rating')
-        trailer.href = `https://www.youtube.com/watch?v=${info.trailers[0].youtube}`
         trailer.textContent = info.title
         overview.textContent = `Synopsis: ${info.overview}`
         function ratings(info) {
@@ -108,7 +107,6 @@ function accessWatchlist(){
             console.log(data)
             data.forEach(handleImages)
         })
-
         
     })
 }
@@ -122,7 +120,6 @@ function accessCompleted(){
             console.log(data)
             data.forEach(handleImages)
         })
-
         
     })
 }
