@@ -32,7 +32,7 @@ selector.addEventListener("change", e => {
         let moviePoster = document.createElement('img');
         
         moviePoster.className = 'posters';
-        moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_ca.jpg`;
+        moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_m.jpg`;
         
         
         container.append(moviePoster)
@@ -79,15 +79,18 @@ function renderInfo(id,data){
         overview.textContent = `Synopsis: ${info.overview}`
         ratings(info)
         trailerHref(info)
+
         function ratings(info) {
             if (info.ratings === undefined) {
                 return rating.textContent = "Not yet rated.";
             } else if (info.ratings.imdb === undefined){
                 return rating.textContent = 'Not yet rated.'
             } else {
-                rating.textContent = `Rating: ${info.ratings.imdb.rating}`
+                let pyramid = info.ratings.imdb.rating
+                rating.textContent = `Rating: ${pyramid}`
+                createPyramid(pyramid)
+                
             }
-            
         }
         function trailerHref(info) {
             if (info.trailers === null) {
@@ -201,6 +204,32 @@ function addToCompleted(data){
             console.log(check)
         })
 }
+
+
+function createPyramid(pyramid){
+    let pyramidCounter = 0
+    if(pyramid>0 && pyramid<=2){
+        pyramidCounter = 1
+    } else if(pyramid>2 && pyramid<=4){
+        pyramidCounter = 2
+    } else if(pyramid>4 && pyramid<=6){
+        pyramidCounter = 3
+    } else if(pyramid>6 && pyramid<=8){
+        pyramidCounter = 4
+    } else {
+        pyramidCounter = 5
+    }
+
+    while(pyramidCounter>0){
+        let container = document.querySelector('#rating-container')
+        let pyramidImg = document.createElement('img')
+        pyramidImg.src = 'https://cdn-icons-png.flaticon.com/512/2360/2360822.png'
+        pyramidImg.className = 'pyramid'
+        container.append(pyramidImg)
+        pyramidCounter --
+    }
+}
+
 
 accessCompleted()
 
