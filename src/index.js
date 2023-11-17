@@ -69,7 +69,7 @@ function renderInfo(id,data){
     .then((info)=>{
         let trailer = document.querySelector('#trailer')
         let overview = document.querySelector('#overview')
-        let rating = document.querySelector('#rating')
+        let rating = document.querySelector('#rating-container')
         trailer.textContent = info.title
         overview.textContent = `Synopsis: ${info.overview}`
         overview.style.visibility = "visible"
@@ -84,7 +84,6 @@ function renderInfo(id,data){
                 return rating.textContent = 'Not yet rated.'
             } else {
                 let pyramid = info.ratings.imdb.rating
-                rating.textContent = `Rating: ${pyramid}`
                 createPyramid(pyramid)
             }
         }
@@ -190,6 +189,14 @@ function addToCompleted(data){
 
 
 function createPyramid(pyramid){
+    let container = document.querySelector('#rating-container')
+    container.innerHTML = ''
+    let p = document.createElement('p')
+    p.className = 'text'
+    p.id = 'rating'
+    container.append(p)
+    
+
     let pyramidCounter = 0
     if(pyramid > 0 && pyramid <= 2){
         pyramidCounter = 1
@@ -203,15 +210,21 @@ function createPyramid(pyramid){
         pyramidCounter = 5
     }
 
-    while(pyramidCounter > 0){
-        let container = document.querySelector('#rating-container')
+    while(pyramidCounter>0){
         let pyramidImg = document.createElement('img')
         pyramidImg.src = 'https://cdn-icons-png.flaticon.com/512/2360/2360822.png'
         pyramidImg.className = 'pyramid'
         container.append(pyramidImg)
         pyramidCounter --
     }
-    
+
+    p.textContent = `Rating:`
+    let p2 = document.createElement('p')
+    p2.className = 'text'
+    p2.id = 'rating'
+    p2.textContent = `${pyramid*10}%`
+    container.append(p2)
+
 }
 
 

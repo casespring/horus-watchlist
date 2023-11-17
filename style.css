@@ -71,8 +71,8 @@ label{
 
 #rating{
     font-size: small;
-    padding: 2%;
-    margin: 2%;
+    padding: 1%;
+    margin-top: 3.5%;
 }
 
 #overview{
@@ -164,3 +164,4 @@ a:visited{
 .pyramid{
     max-width: 4%;
 }
+
