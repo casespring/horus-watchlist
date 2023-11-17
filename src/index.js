@@ -30,21 +30,18 @@ selector.addEventListener("change", e => {
         let imageUrl = data.poster;
         let container = document.querySelector('#poster-container');
         let moviePoster = document.createElement('img');
-        
         moviePoster.className = 'posters';
-        moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_m.jpg`;
-        
-        
-        container.append(moviePoster)
-        
-        
+        moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_m.jpg`; 
+        moviePoster.alt = "Image not found";
+        moviePoster.onerror = function () {
+            return moviePoster.src = "https://png.pngtree.com/thumb_back/fw800/background/20220523/pngtree-404-page-not-found-design-template-image_1386722.jpg";
+        }
+        container.append(moviePoster) 
         moviePoster.addEventListener('click', (e)=>{
             let id = data.ids['simkl_id']
             document.querySelector('#selectedMovie').src= e.target.src
-            renderInfo(id,data)
-            
+            renderInfo(id,data)    
         })
-
         moviePoster.addEventListener('dblclick', (e)=>{
             let clickedMoviePoster = e.target;
             fetch(`http://localhost:3000/watch-list/${data.id}`,{
@@ -62,8 +59,6 @@ selector.addEventListener("change", e => {
               })
         })
 
-
-
     }
 
 function renderInfo(id,data){
@@ -77,10 +72,12 @@ function renderInfo(id,data){
         let rating = document.querySelector('#rating')
         trailer.textContent = info.title
         overview.textContent = `Synopsis: ${info.overview}`
+        overview.style.visibility = "visible"
         ratings(info)
         trailerHref(info)
 
         function ratings(info) {
+            resetPyramid = document.querySelectorAll('.pyamid')
             if (info.ratings === undefined) {
                 return rating.textContent = "Not yet rated.";
             } else if (info.ratings.imdb === undefined){
@@ -89,7 +86,6 @@ function renderInfo(id,data){
                 let pyramid = info.ratings.imdb.rating
                 rating.textContent = `Rating: ${pyramid}`
                 createPyramid(pyramid)
-                
             }
         }
         function trailerHref(info) {
@@ -99,12 +95,8 @@ function renderInfo(id,data){
                 trailer.href = `https://www.youtube.com/watch?v=${info.trailers[0].youtube}`
             }
         }
-        
         addToWatchlist(data)
-    
     })
-
-
 }
 
 
@@ -122,8 +114,7 @@ function accessWatchlist(){
                     handleImages(movies)
                 }
             }
-        })
-        
+        })  
     })
 }
 
@@ -141,7 +132,6 @@ function accessCompleted(){
                 }
             }
         })
-
         
     })
 }
@@ -157,21 +147,17 @@ function addToWatchlist(data){
     completedButton.className = 'button'
     completedButton.textContent = 'Add to Completed'
     imgDiv.append(watchlistButton,completedButton)
-
     watchlistButton.addEventListener('click', ()=>{
         alert(`${data.title} was added to your Horus Watchlist`)
         data.category = `${searchMedium}`
         data.completed = false
 
-        
-        
         fetch(`http://localhost:3000/watch-list`, {
             method : 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body : JSON.stringify(data)
-            
+            body : JSON.stringify(data)    
         })
         .then((res)=>res.json())
         .then((horus)=>{
@@ -182,12 +168,9 @@ function addToWatchlist(data){
     completedButton.addEventListener('click', ()=>{
         alert(`${data.title} was added to your Horus Completed List`)
         addToCompleted(data)
-
-
     })
 }
         
-
 function addToCompleted(data){
     console.log(data.id)
     fetch(`http://localhost:3000/watch-list/${data.id}`,{
@@ -208,19 +191,19 @@ function addToCompleted(data){
 
 function createPyramid(pyramid){
     let pyramidCounter = 0
-    if(pyramid>0 && pyramid<=2){
+    if(pyramid > 0 && pyramid <= 2){
         pyramidCounter = 1
-    } else if(pyramid>2 && pyramid<=4){
+    } else if(pyramid > 2 && pyramid <= 4){
         pyramidCounter = 2
-    } else if(pyramid>4 && pyramid<=6){
+    } else if(pyramid > 4 && pyramid <= 6){
         pyramidCounter = 3
-    } else if(pyramid>6 && pyramid<=8){
+    } else if(pyramid > 6 && pyramid <= 8){
         pyramidCounter = 4
     } else {
         pyramidCounter = 5
     }
 
-    while(pyramidCounter>0){
+    while(pyramidCounter > 0){
         let container = document.querySelector('#rating-container')
         let pyramidImg = document.createElement('img')
         pyramidImg.src = 'https://cdn-icons-png.flaticon.com/512/2360/2360822.png'
@@ -228,6 +211,7 @@ function createPyramid(pyramid){
         container.append(pyramidImg)
         pyramidCounter --
     }
+    
 }
 
 

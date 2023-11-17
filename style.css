@@ -22,6 +22,7 @@
     border: solid black 2px;
     margin: 0.3em;
     border-radius: 0.5em;
+    cursor: pointer;
 }
 
 div#poster-container::-webkit-scrollbar {
@@ -57,6 +58,11 @@ body{
 .text {
     color:rgb(169, 151, 46);
     font-family:  'Press Start 2P', cursive;
+    cursor: pointer;
+}
+
+#search-pointer {
+    cursor: pointer;
 }
 
 label{
@@ -71,11 +77,12 @@ label{
 
 #overview{
     font-size: 0.7em;
-    margin-bottom: 30px;
     background-color: #463000;
     border: 3mm ridge rgb(169, 151, 46);;
     padding: 2%;
     margin: 2%;
+    line-height: 175%;
+    visibility: hidden;
 }
 
 .imgDiv #watchlist-button{

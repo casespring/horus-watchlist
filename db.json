@@ -12,6 +12,32 @@
       "category": "tv",
       "completed": true,
       "id": 1
+    },
+    {
+      "title": "Saltburn",
+      "year": 2023,
+      "poster": "14/14498509c49528079a",
+      "ids": {
+        "simkl_id": 1833131,
+        "slug": "saltburn",
+        "tmdb": "930564"
+      },
+      "category": "movie",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "title": "John Wick: Assassin's Code (Extra)",
+      "year": 2015,
+      "poster": "83/83107962900706404",
+      "ids": {
+        "simkl_id": 1140664,
+        "slug": "john-wick-assassins-code-extra",
+        "tmdb": "619022"
+      },
+      "category": "movie",
+      "completed": false,
+      "id": 4
     }
   ]
 }
