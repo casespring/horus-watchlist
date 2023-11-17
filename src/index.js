@@ -46,7 +46,7 @@ selector.addEventListener("change", e => {
         })
         moviePoster.addEventListener('dblclick', (e)=>{
             let clickedMoviePoster = e.target;
-            fetch(`http://localhost:3000/watch-list/${data.id}`,{
+            fetch(`https://eye-of-horus-server.onrender.com/watch-list${data.id}`,{
                 method:'DELETE'
             })
             .then((response) => {
@@ -106,7 +106,7 @@ function accessWatchlist(){
     let container = document.querySelector('#poster-container')
     watchlist.addEventListener('click', ()=>{
         container.innerHTML = ''
-        fetch(`http://localhost:3000/watch-list`)
+        fetch(`https://eye-of-horus-server.onrender.com/watch-list`)
         .then((res)=>res.json())
         .then((data)=>{
             console.log(data)
@@ -124,7 +124,7 @@ function accessCompleted(){
     let container = document.querySelector('#poster-container')
     completed.addEventListener('click', ()=>{
         container.innerHTML=''
-        fetch(`http://localhost:3000/watch-list`)
+        fetch(`https://eye-of-horus-server.onrender.com/watch-list`)
         .then((res)=>res.json())
         .then((data)=>{
             for(movies of data){
@@ -153,7 +153,7 @@ function addToWatchlist(data){
         data.category = `${searchMedium}`
         data.completed = false
 
-        fetch(`http://localhost:3000/watch-list`, {
+        fetch(`https://eye-of-horus-server.onrender.com/watch-list`, {
             method : 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -174,7 +174,7 @@ function addToWatchlist(data){
         
 function addToCompleted(data){
     console.log(data.id)
-    fetch(`http://localhost:3000/watch-list/${data.id}`,{
+    fetch(`https://eye-of-horus-server.onrender.com/watch-list${data.id}`,{
         method : 'PATCH',
         headers: {
             'Content-Type': 'application/json'
