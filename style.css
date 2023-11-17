@@ -121,10 +121,11 @@ label{
     background-color: black;
 }
 
-#info-container img {
+#selectedMovie {
     width: 60%;
     height: auto;
-    border: 2mm ridge rgb(169, 151, 46);
+    border: 1mm ridge rgb(169, 151, 46);
+    visibility: hidden;
 }
 
 .imgDiv{
