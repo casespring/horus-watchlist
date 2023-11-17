@@ -12,6 +12,20 @@
       "category": "tv",
       "completed": true,
       "id": 1
+    },
+    {
+      "title": "Jujutsu Kaisen",
+      "title_romaji": "Jujutsu Kaisen",
+      "year": 2023,
+      "type": "tv",
+      "poster": "14/14244260c19d32dd2c",
+      "ids": {
+        "simkl_id": 1847578,
+        "slug": "jujutsu-kaisen"
+      },
+      "category": "anime",
+      "completed": true,
+      "id": 2
     }
   ]
 }

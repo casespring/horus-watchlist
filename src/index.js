@@ -89,8 +89,8 @@ function renderInfo(id,data){
                 let pyramid = info.ratings.imdb.rating
                 rating.textContent = `Rating: ${pyramid}`
                 createPyramid(pyramid)
-                
             }
+
         }
         function trailerHref(info) {
             if (info.trailers === null) {
