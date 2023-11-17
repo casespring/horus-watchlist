@@ -14,18 +14,30 @@
       "id": 1
     },
     {
-      "title": "Jujutsu Kaisen",
-      "title_romaji": "Jujutsu Kaisen",
+      "title": "Saltburn",
       "year": 2023,
-      "type": "tv",
-      "poster": "14/14244260c19d32dd2c",
+      "poster": "14/14498509c49528079a",
       "ids": {
-        "simkl_id": 1847578,
-        "slug": "jujutsu-kaisen"
+        "simkl_id": 1833131,
+        "slug": "saltburn",
+        "tmdb": "930564"
       },
-      "category": "anime",
-      "completed": true,
-      "id": 2
+      "category": "movie",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "title": "John Wick: Assassin's Code (Extra)",
+      "year": 2015,
+      "poster": "83/83107962900706404",
+      "ids": {
+        "simkl_id": 1140664,
+        "slug": "john-wick-assassins-code-extra",
+        "tmdb": "619022"
+      },
+      "category": "movie",
+      "completed": false,
+      "id": 4
     }
   ]
 }

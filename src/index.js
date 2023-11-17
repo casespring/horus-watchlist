@@ -32,12 +32,15 @@ selector.addEventListener("change", e => {
         let moviePoster = document.createElement('img');
         moviePoster.className = 'posters';
         moviePoster.src = `https://wsrv.nl/?url=https://simkl.in/posters/${imageUrl}_m.jpg`; 
+        moviePoster.alt = "Image not found";
+        moviePoster.onerror = function () {
+            return moviePoster.src = "https://png.pngtree.com/thumb_back/fw800/background/20220523/pngtree-404-page-not-found-design-template-image_1386722.jpg";
+        }
         container.append(moviePoster) 
         moviePoster.addEventListener('click', (e)=>{
             let id = data.ids['simkl_id']
             document.querySelector('#selectedMovie').src= e.target.src
-            renderInfo(id,data)
-            
+            renderInfo(id,data)    
         })
         moviePoster.addEventListener('dblclick', (e)=>{
             let clickedMoviePoster = e.target;
@@ -69,10 +72,12 @@ function renderInfo(id,data){
         let rating = document.querySelector('#rating')
         trailer.textContent = info.title
         overview.textContent = `Synopsis: ${info.overview}`
+        overview.style.visibility = "visible"
         ratings(info)
         trailerHref(info)
 
         function ratings(info) {
+            resetPyramid = document.querySelectorAll('.pyamid')
             if (info.ratings === undefined) {
                 return rating.textContent = "Not yet rated.";
             } else if (info.ratings.imdb === undefined){
@@ -166,7 +171,6 @@ function addToWatchlist(data){
     })
 }
         
-
 function addToCompleted(data){
     console.log(data.id)
     fetch(`http://localhost:3000/watch-list/${data.id}`,{
@@ -199,7 +203,7 @@ function createPyramid(pyramid){
         pyramidCounter = 5
     }
 
-    while(pyramidCounter>0){
+    while(pyramidCounter > 0){
         let container = document.querySelector('#rating-container')
         let pyramidImg = document.createElement('img')
         pyramidImg.src = 'https://cdn-icons-png.flaticon.com/512/2360/2360822.png'
@@ -207,6 +211,7 @@ function createPyramid(pyramid){
         container.append(pyramidImg)
         pyramidCounter --
     }
+    
 }
 
 
