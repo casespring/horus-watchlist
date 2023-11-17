@@ -39,7 +39,9 @@ selector.addEventListener("change", e => {
         container.append(moviePoster) 
         moviePoster.addEventListener('click', (e)=>{
             let id = data.ids['simkl_id']
-            document.querySelector('#selectedMovie').src= e.target.src
+            let selectedMovie = document.querySelector('#selectedMovie')
+            selectedMovie.src= e.target.src
+            selectedMovie.style.visibility = 'visible'
             renderInfo(id,data)    
         })
         moviePoster.addEventListener('dblclick', (e)=>{
