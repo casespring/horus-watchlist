@@ -124,6 +124,7 @@ label{
 #info-container img {
     width: 60%;
     height: auto;
+    border: 2mm ridge rgb(169, 151, 46);
 }
 
 .imgDiv{
