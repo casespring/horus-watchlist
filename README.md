@@ -6,7 +6,8 @@ Welcome to Eye of Horus, a watchlist website where users can discover, add, and 
 
 - **Search**: Users can search for movies, anime, and TV shows using the search bar.
 - **Watchlist**: Users can add movies, anime, and TV shows to their personal watchlist.
-- **Filtering**: Filter options to refine search results by genre, release year, rating, etc.
+- **Completedlist**: Users can add movies, anime, and TV shows to their personal completedlist.
+- **Pyramidrating**: Original Pyramid rating for movies, anime, and tv show 0% out of 100%.
 - **Responsive Design**: The website is designed to work seamlessly across various devices and screen sizes.
 
 ## Technologies Used
