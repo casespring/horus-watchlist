@@ -167,3 +167,51 @@ a:visited{
     max-width: 4%;
 }
 
+@media only screen and (max-width: 600px) {
+    #container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .posters{
+        width: 100px;
+    }
+
+    #info-container{
+        flex-direction: column;
+    }
+
+    #horus{
+        width: 50px;
+        height: 50px;
+    }
+
+    .imgDiv{
+        width: 100%;
+    }
+
+    #selectedMovie {
+        width: 100%;
+    }
+
+    .imgDiv #watchlist-button, .imgDiv #completed-button{
+        font-size: 8px;
+        padding: 1% 2%;
+    }
+
+    #overview{
+        font-size: 0.5em;
+    }
+
+    label{
+        font-size: 0.6em;
+    }
+
+    #rating{
+        font-size: x-small;
+    }
+
+    .pyramid{
+        max-width: 8%;
+    }
+}
