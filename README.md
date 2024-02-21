@@ -14,7 +14,7 @@ Welcome to Eye of Horus, a watchlist website where users can discover, add, and 
 - HTML: Used for structuring the website.
 - CSS: Used for styling and layout.
 - JavaScript: Used for interactive features and functionality.
-- Api: 
+- Api: Used for it'b vast database on movies, tv shows, and anime https://simkl.com/.
 
 ## Getting Started
 
